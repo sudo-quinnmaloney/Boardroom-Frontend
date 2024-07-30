@@ -2,7 +2,7 @@
   "name": "boardroom",
   "version": "0.0.1",
   "description": "a platform for public distribution and discussion of proxy materials",
-  "main": "./src/client.js",
+  "main": "./dist/server.js",
   "node": "18.17.1",
   "packageManager": "yarn@1.22.22",
   "scripts": {
