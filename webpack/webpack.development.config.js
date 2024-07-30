@@ -1,5 +1,5 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const distDir = path.join(__dirname, '../dist');
 const srcDir = path.join(__dirname, '../src');
@@ -37,9 +37,8 @@ module.exports = [
             ],
         },
         plugins: [
-            new ExtractTextPlugin({
+            new MiniCssExtractPlugin({
                 filename: 'styles.css',
-                allChunks: true
             })
         ]
     },

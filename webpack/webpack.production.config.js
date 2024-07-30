@@ -1,10 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StatsPlugin = require('stats-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
 const distDir = path.join(__dirname, '../dist');
 const srcDir = path.join(__dirname, '../src');
@@ -34,51 +34,20 @@ module.exports = [
                     ]
                 },
                 {
-                    test: /\.pcss$/,
-                    use: ExtractTextPlugin.extract({
-                        fallback: 'style-loader',
-                        use: [
-                            {
-                                loader: 'css-loader',
-                                options: {
-                                    modules: true,
-                                    importLoaders: 1,
-                                    localIdentName: '[hash:base64:10]',
-                                    sourceMap: false,
-                                }
-                            },
-                            {
-                                loader: 'postcss-loader',
-                                options: {
-                                    config: {
-                                        path: `${__dirname}/../postcss/postcss.config.js`,
-                                    }
-                                }
-                            }
-                        ]
-                    })
+                    test: /\.css$/i,
+                    use: [MiniCssExtractPlugin.loader, "css-loader"],
                 }
             ],
         },
         optimization: {
             minimizer: [
                 // we specify a custom UglifyJsPlugin here to get source maps in production
-                new UglifyJsPlugin({
-                    cache: true,
-                    parallel: true,
-                    uglifyOptions: {
-                        compress: false,
-                        ecma: 6,
-                        mangle: true
-                    },
-                    sourceMap: true
-                })
+                new TerserPlugin(),
             ]
         },
         plugins: [
-            new ExtractTextPlugin({
-                filename: 'styles.css',
-                allChunks: true
+            new MiniCssExtractPlugin()({
+                filename: 'styles.css'
             }),
             new webpack.DefinePlugin({
                 'process.env': {
@@ -141,9 +110,7 @@ module.exports = [
             ],
         },
         plugins: [
-            new OptimizeCssAssetsPlugin({
-                cssProcessorOptions: {discardComments: {removeAll: true}}
-            }),
+            new CssMinimizerPlugin(),
             new StatsPlugin('stats.json', {
                 chunkModules: true,
                 modules: true,

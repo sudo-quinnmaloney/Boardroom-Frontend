@@ -2,7 +2,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: ['webpack/hot/dev-server', './src/client.js'],
@@ -25,9 +25,8 @@ module.exports = {
         ],
     },
     plugins: [
-        new ExtractTextPlugin({
+        new MiniCssExtractPlugin({
             filename: 'styles.css',
-            allChunks: true
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'src', 'index.html')
