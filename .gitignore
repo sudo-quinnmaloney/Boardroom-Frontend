@@ -4,3 +4,4 @@ node_modules
 testgrounds.py
 sec-edgar-filings
 .DS_Store
+dist
