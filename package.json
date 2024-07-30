@@ -1,7 +1,7 @@
 {
   "name": "boardroom",
-  "version": "1.0.0",
-  "description": "a poilerplate for react functional with hooks ( react version +16.8 ) ",
+  "version": "0.0.1",
+  "description": "a platform for public distribution and discussion of proxy materials ( react version +16.8 ) ",
   "main": "index.js",
   "scripts": {
     "start:prod": "cross-env NODE_ENV=production node ./express/production.js",
@@ -11,9 +11,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nimahkh/reactzero-boilerplate.git"
+    "url": "https://github.com/sudo-quinnmaloney/Boardroom-Frontend.git"
   },
-  "author": "nima habibkhoda",
+  "author": "Quinn Maloney",
   "license": "MIT",
   "dependencies": {
     "@hot-loader/react-dom": "^16.8.6",
