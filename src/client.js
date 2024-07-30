@@ -5,7 +5,7 @@ import App from './app/App';
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import counterApp from './reducers'
-import { ThemeProvider } from '@material-ui/styles';
+import {ThemeProvider, StyledEngineProvider} from '@mui/material/styles'
 import theme from './theme'
 
 const preloadedState = window.__PRELOADED_STATE__
@@ -23,13 +23,15 @@ function Application() {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </Provider>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </Provider>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
 

@@ -6,7 +6,8 @@ import {createStore} from 'redux'
 import counterApp from './reducers'
 import {Provider} from 'react-redux'
 import App from './app/App';
-import { ServerStyleSheets, ThemeProvider } from '@material-ui/styles';
+import { ServerStyleSheets } from '@mui/styles';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import theme from './theme';
 
 export default function serverRenderer() {
@@ -17,13 +18,15 @@ export default function serverRenderer() {
         const context = {};
         const markup = ReactDOMServer.renderToString(
           sheets.collect(
-          <ThemeProvider theme={theme}>
-            <Provider store={store}>
-                <StaticRouter location={req.url} context={context}>
-                    <App/>
-                </StaticRouter>
-            </Provider>
-          </ThemeProvider>)
+          <StyledEngineProvider injectFirst>
+              <ThemeProvider theme={theme}>
+                <Provider store={store}>
+                    <StaticRouter location={req.url} context={context}>
+                        <App/>
+                    </StaticRouter>
+                </Provider>
+              </ThemeProvider>
+          </StyledEngineProvider>)
         );
         const preloadedState = store.getState()
 
