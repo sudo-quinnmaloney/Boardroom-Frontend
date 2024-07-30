@@ -6,7 +6,7 @@
   "scripts": {
     "start:prod": "cross-env NODE_ENV=production node ./express/production.js",
     "start:dev": "babel-node ./node_modules/webpack-dev-server/bin/webpack-dev-server --open",
-    "build:prod": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors",
+    "build:prod": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack --mode production --config ./webpack/webpack.production.config.js --progress --profile",
     "webpack": "babel-node ./node_modules/webpack/bin/webpack"
   },
   "repository": {
@@ -42,7 +42,6 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "clean-webpack-plugin": "^4.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",

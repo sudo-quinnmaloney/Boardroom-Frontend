@@ -3,8 +3,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StatsPlugin = require('stats-webpack-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const TerserPlugin = require("terser-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 
 const distDir = path.join(__dirname, '../dist');
 const srcDir = path.join(__dirname, '../src');
@@ -18,6 +17,7 @@ module.exports = [
             path: distDir,
             filename: 'client.js',
             publicPath: distDir,
+            clean: true
         },
         resolve: {
             extensions: ['.js', '.jsx']
@@ -46,7 +46,7 @@ module.exports = [
             ]
         },
         plugins: [
-            new MiniCssExtractPlugin()({
+            new MiniCssExtractPlugin({
                 filename: 'styles.css'
             }),
             new webpack.DefinePlugin({
@@ -54,8 +54,6 @@ module.exports = [
                     NODE_ENV: '"production"'
                 }
             }),
-            new CleanWebpackPlugin(),
-            new webpack.optimize.OccurrenceOrderPlugin(),
         ]
     },
     {
@@ -67,6 +65,7 @@ module.exports = [
             filename: 'server.js',
             libraryTarget: 'commonjs2',
             publicPath: distDir,
+            clean: true
         },
         resolve: {
             extensions: ['.js', '.jsx']
