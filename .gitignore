@@ -1,0 +1,6 @@
+node_modules
+.env
+../py_edgar_test.py
+testgrounds.py
+sec-edgar-filings
+.DS_Store
