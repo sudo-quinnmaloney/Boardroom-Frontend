@@ -1,12 +1,12 @@
 {
   "name": "boardroom",
   "version": "0.0.1",
-  "description": "a platform for public distribution and discussion of proxy materials ( react version +16.8 ) ",
+  "description": "a platform for public distribution and discussion of proxy materials",
   "main": "index.js",
   "scripts": {
     "start:prod": "cross-env NODE_ENV=production node ./express/production.js",
     "start:dev": "babel-node ./node_modules/webpack-dev-server/bin/webpack-dev-server --open",
-    "build:prod": "cross-env NODE_ENV=production webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors",
+    "build:prod": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors",
     "webpack": "babel-node ./node_modules/webpack/bin/webpack"
   },
   "repository": {

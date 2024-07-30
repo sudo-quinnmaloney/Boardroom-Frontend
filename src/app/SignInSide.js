@@ -134,7 +134,7 @@ export default function SignInSide() {
           </form>
         </div>
       </Grid>
-      <style>{`.${classes.root} { filter: blur; -webkit-filter: blur(20px); }`}</style>
+      <style>{`.${classes.root} { filter: blur brightness(85%); -webkit-filter: blur(20px) brightness(85%); }`}</style>
     </Grid>
   );
 }

@@ -43,13 +43,13 @@ export default function DescriptionSide() {
       <LoadingClosedFidget />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5" className={classes.title}>
-          Project Mission
+          COMING SOON.
         </Typography>
         <Typography variant="body1" className={classes.content}>
           COMING SOON.
         </Typography>
         <Typography component="h1" variant="h5" className={classes.title}>
-          About Me
+          COMING SOON.
         </Typography>
         <Typography variant="body1" className={classes.content}>
           COMING SOON.
