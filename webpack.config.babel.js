@@ -29,7 +29,7 @@ module.exports = {
             filename: 'styles.css',
         }),
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src', 'index.html')
+            template: path.join(__dirname, 'index.html')
         }),
         new webpack.HotModuleReplacementPlugin()],
 };
