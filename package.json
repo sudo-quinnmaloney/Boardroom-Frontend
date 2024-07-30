@@ -2,12 +2,12 @@
   "name": "boardroom",
   "version": "0.0.1",
   "description": "a platform for public distribution and discussion of proxy materials",
-  "main": "index.js",
+  "main": "./src/client.js",
   "node": "18.17.1",
   "packageManager": "yarn@1.22.22",
   "scripts": {
     "start:prod": "cross-env NODE_ENV=production node ./express/production.js",
-    "start:dev": "babel-node ./node_modules/webpack-dev-server/bin/webpack-dev-server --open",
+    "start:dev": "babel-node ./node_modules/webpack-dev-server/bin/webpack-dev-server --open --mode development",
     "build:prod": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack --mode production --config ./webpack/webpack.production.config.js --progress --profile",
     "webpack": "babel-node ./node_modules/webpack/bin/webpack"
   },
@@ -18,7 +18,6 @@
   "author": "Quinn Maloney",
   "license": "MIT",
   "dependencies": {
-    "22": "^0.0.0",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@mui/base": "5.0.0-beta.40",
