@@ -12,13 +12,13 @@ a SSR poilerplate for react functional with hooks ( react version +16.8 ,jss , w
 #### step 1 
 
 ```
-git clone https://github.com/iran-react-community/React-SSR-boilerplate.git
+git clone git@github.com:sudo-quinnmaloney/Boardroom-Frontend.git
 ```
 
 #### step 2
 
 ```
-yarn install  && yarn global add webpack
+yarn install
 ```
 #### step 3
 
