@@ -1,13 +1,12 @@
-# Boardroom (based off of React-SSR-boilerplate)
+# Boardroom
 
-a SSR poilerplate for react functional with hooks ( react version +16.8 ,jss , webpack , express ) 
+Frontend application for Boardroom LLC ( react version 17.0.2 , jss , webpack , express ). Originally based off of React-SSR-boilerplate. 
 
 #### features added 
 
-- ssr provider supporting
-- hot reloading
-- jss support
-
+- updated and re-organized dependencies
+- Boardroom development-in-progress overlay
+- Boardroom assets
 
 #### step 1 
 
