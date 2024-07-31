@@ -7,7 +7,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { withStyles } from '@mui/styles';
+import CommitHistory from './CommitHistory';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -22,7 +22,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Typography component={"div"}>{value === index && children}</Typography>
         </Box>
       )}
     </div>
@@ -66,9 +66,9 @@ export default function FullWidthTabs() {
           variant="fullWidth"
           aria-label="holding screen info tabs"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Mission" {...a11yProps(0)} />
+          <Tab label="Progress" {...a11yProps(1)} />
+          <Tab label="About Me" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -80,7 +80,7 @@ export default function FullWidthTabs() {
           Item One
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          Item Two
+          <CommitHistory />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
           Item Three
