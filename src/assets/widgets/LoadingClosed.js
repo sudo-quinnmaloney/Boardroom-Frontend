@@ -1,5 +1,5 @@
-import React from 'react';
-import HoldingScreenInfoTabs from '../../app/HoldingScreenInfoTabs';
+import React, { useState, useEffect } from 'react';
+import HoldingScreenInfoTabs from '../../components/HoldingScreenInfoTabs';
 
 // TODO: instead of event listener, use hook for promise isLoading on github data fetches
 // TODO: fetch github commit history
@@ -17,31 +17,29 @@ export default function LoadingClosedFidget() {
   let fidgetWidth = fidgetWidth_0;
   let carOpacity = 1;
 
-  const toggleExpansion = () => {
-    const cars = document.getElementsByClassName('car');
-    const displayContainers = document.getElementsByClassName('displayContainer');
-    const infoDisplays = document.getElementsByClassName('infoDisplay');
+  const [isLoading, setIsLoading] = useState(true);
 
-    if (cars.length) {
-      const displayContainer = displayContainers[0];
-      if (cars[0].style.opacity === '0') {
-        displayContainer.classList.remove("shrinking");
-        cars[0].style.opacity = '1';
-      } else {         
-        displayContainer.classList.add("shrinking");
+  useEffect(() => {
+    if (!isLoading) {
+      const cars = document.getElementsByClassName('car');
+      const displayContainers = document.getElementsByClassName('displayContainer');
+      const infoDisplays = document.getElementsByClassName('infoDisplay');
+
+      if (cars.length) {
+        const displayContainer = displayContainers[0];
         cars[0].style.opacity = '0';
+        displayContainer.classList.add("shrinking");
+      }
+
+      if (infoDisplays.length) {
+        const infoDisplay = infoDisplays[0];
+        infoDisplay.classList.add('risingText');
       }
     }
-
-    if (infoDisplays.length) {
-      const infoDisplay = infoDisplays[0];
-      infoDisplay.classList.add('risingText');
-    }
-  }
-  window.addEventListener('click', toggleExpansion, {once: true});
+  }, [isLoading]);
 
   return (
-    <div className="lockscreenContainer">
+    <div className="lockscreenContainer" onClick={() => setIsLoading(false) }>
       <div className="infoDisplay">
         <HoldingScreenInfoTabs />
       </div>
@@ -115,6 +113,7 @@ export default function LoadingClosedFidget() {
           .lockscreenContainer {
             height: 100%;
             width: 100%;
+            z-index: 100;
             position: absolute;
             background-color: rgb(191, 191, 191, 0.9);
           }

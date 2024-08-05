@@ -5,7 +5,7 @@ import {Helmet} from "react-helmet";
 import {createStore} from 'redux'
 import counterApp from './reducers'
 import {Provider} from 'react-redux'
-import App from './app/App';
+import App from './App';
 import { ServerStyleSheets } from '@mui/styles';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import theme from './theme';

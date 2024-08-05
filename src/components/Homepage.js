@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import makeStyles from '@mui/styles/makeStyles';
 import SignInSide from './SignInSide';
 import DescriptionSide from './DescriptionSide';
+import LoadingClosedFidget from "../assets/widgets/LoadingClosed";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,7 +19,8 @@ export default function Homepage() {
   const classes = useStyles();
 
   return (
-    <Grid container component="main" className={classes.root}>
+    <Grid container component="main" id={classes.root}>
+      <LoadingClosedFidget />
       <CssBaseline />
       <DescriptionSide />
       <SignInSide />
