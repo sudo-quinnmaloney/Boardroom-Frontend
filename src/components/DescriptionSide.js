@@ -38,7 +38,7 @@ export default function DescriptionSide() {
   const classes = useStyles();
 
   return (
-    <Grid item className={classes.descriptionSide} component={Paper} elevation={4} square>
+    <Grid item className={classes.descriptionSide} bgcolor={'inherit'} component={Paper} elevation={4} square>
       <div className={classes.paper}>
         <Typography component="h1" variant="h5" className={classes.title}>
           COMING SOON.

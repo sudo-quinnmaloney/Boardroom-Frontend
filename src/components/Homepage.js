@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     height: '100vh',
     display: 'flex',
-    overflow: 'scroll', // Prevent overflow
+    overflow: 'hidden', // Prevent overflow
   },
 }));
 

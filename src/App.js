@@ -18,6 +18,7 @@ function App () {
           <Switch>
               <Route exact path='/' component={Homepage}/>
           </Switch>
+        <style>{`body { background-color: rgb(191, 191, 191, 0.9); }`}</style>
       </div>
   );
 }
