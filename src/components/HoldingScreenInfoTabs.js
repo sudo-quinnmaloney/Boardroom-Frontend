@@ -69,9 +69,9 @@ const HoldingScreenInfo = ({ loadingCallback }) => {
           variant="fullWidth"
           aria-label="holding screen info tabs"
         >
-          <Tab label="Mission" {...a11yProps(0)} />
-          <Tab label="Progress" {...a11yProps(1)} />
-          <Tab label="About Me" {...a11yProps(2)} />
+          <Tab label="Progress" {...a11yProps(0)} />
+          <Tab disabled={true} label="Mission" {...a11yProps(1)} />
+          <Tab disabled={true} label="About Me" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -80,10 +80,10 @@ const HoldingScreenInfo = ({ loadingCallback }) => {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          Item One
+          <CommitHistory loadingCallback={loadingCallback}/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <CommitHistory loadingCallback={loadingCallback}/>
+          Item Two
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
           Item Three
