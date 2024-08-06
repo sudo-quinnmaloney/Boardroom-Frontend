@@ -34,11 +34,9 @@ function MakeCommitRows({loadingCallback}) {
   }
 
   return (
-    <div>
-      <ul>
-        {commitRows}
-      </ul>
-    </div>
+    <ul className={'commit-list'}>
+      {commitRows}
+    </ul>
   );
 }
 
@@ -46,6 +44,7 @@ export default function CommitHistory({loadingCallback}) {
   return (
     <div>
       <MakeCommitRows loadingCallback={loadingCallback}/>
+      <style>{`.commit-list {padding: 0 0 0 0;}`}</style>
     </div>
   );
 }

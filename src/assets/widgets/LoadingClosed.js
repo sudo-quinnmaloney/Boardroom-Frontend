@@ -125,7 +125,7 @@ export default function LoadingClosedFidget() {
             left: ${X_0 + 5}%;
             top: ${Y_1}%;
             opacity: 0.0;
-            width: 50%;
+            width: 70%;
             z-index: 10;
           }
           
