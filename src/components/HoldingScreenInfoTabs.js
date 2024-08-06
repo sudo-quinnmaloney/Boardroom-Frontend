@@ -8,6 +8,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import CommitHistory from './CommitHistory';
+import {useEffect} from "react";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -20,11 +21,12 @@ function TabPanel(props) {
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography component={"div"}>{value === index && children}</Typography>
-        </Box>
-      )}
+      <Box hidden={value !== index} sx={{ p: 3 }}>
+        <Typography
+          component={"div"}>
+          {children}
+        </Typography>
+      </Box>
     </div>
   );
 }
@@ -42,7 +44,8 @@ function a11yProps(index) {
   };
 }
 
-export default function FullWidthTabs() {
+// TODO: add another effect to handle all children loading states and only show the tabs when all children are loaded
+const HoldingScreenInfo = ({ loadingCallback }) => {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -80,7 +83,7 @@ export default function FullWidthTabs() {
           Item One
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <CommitHistory />
+          <CommitHistory loadingCallback={loadingCallback}/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
           Item Three
@@ -89,3 +92,5 @@ export default function FullWidthTabs() {
     </Box>
   );
 }
+
+export default HoldingScreenInfo;

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import HoldingScreenInfoTabs from '../../components/HoldingScreenInfoTabs';
+import React, {useState, useEffect} from 'react';
+import HoldingScreenInfo from '../../components/HoldingScreenInfoTabs';
 
 // TODO: instead of event listener, use hook for promise isLoading on github data fetches
 // TODO: fetch github commit history
@@ -39,9 +39,9 @@ export default function LoadingClosedFidget() {
   }, [isLoading]);
 
   return (
-    <div className="lockscreenContainer" onClick={() => setIsLoading(false) }>
+    <div className="lockscreenContainer">
       <div className="infoDisplay">
-        <HoldingScreenInfoTabs />
+        <HoldingScreenInfo loadingCallback={setIsLoading}/>
       </div>
       <div className="displayContainer">
         <div className="boardroomTextContainer">

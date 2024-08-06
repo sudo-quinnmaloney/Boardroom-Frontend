@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import getCommitHistory from '../functions/FetchCommits';
 
-function MakeCommitRows() {
+function MakeCommitRows({loadingCallback}) {
   const [commitRows, setCommitRows] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -23,10 +23,11 @@ function MakeCommitRows() {
         console.error(error);
       } finally {
         setLoading(false);
+        loadingCallback(false);
       }
     }
     fetchCommits();
-  }, []);
+  }, [loadingCallback]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -41,10 +42,10 @@ function MakeCommitRows() {
   );
 }
 
-export default function CommitHistory() {
+export default function CommitHistory({loadingCallback}) {
   return (
     <div>
-      <MakeCommitRows />
+      <MakeCommitRows loadingCallback={loadingCallback}/>
     </div>
   );
 }
