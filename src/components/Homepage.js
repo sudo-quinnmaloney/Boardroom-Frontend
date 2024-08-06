@@ -9,7 +9,7 @@ import LoadingClosedFidget from "../assets/widgets/LoadingClosed";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100vh',
+    height: '100%',
     display: 'flex',
     overflow: 'hidden', // Prevent overflow
   },
