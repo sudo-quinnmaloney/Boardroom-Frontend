@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Helmet from "react-helmet";
 import {Switch, Route} from 'react-router-dom';
-import {NavLink} from 'react-router-dom';
-import Homepage from "./Homepage";
+import Homepage from "./components/Homepage";
 
 function App () {
   return (
@@ -14,9 +13,6 @@ function App () {
               meta={[
                   {name: "description", content: "Server side rendering example"},
                   {name: "viewport", content: "width=device-width, initial-scale=1"},
-              ]}
-              link={[
-                {rel: "stylesheet", href: "/dist/styles.css"},
               ]}
           />
           <Switch>

@@ -4,7 +4,6 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import LoadingClosedFidget from "../assets/widgets/LoadingClosed";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,7 +39,6 @@ export default function DescriptionSide() {
 
   return (
     <Grid item className={classes.descriptionSide} component={Paper} elevation={4} square>
-      <LoadingClosedFidget />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5" className={classes.title}>
           COMING SOON.

@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, {useState, useEffect} from 'react';
+import HoldingScreenInfo from '../../components/HoldingScreenInfoTabs';
 
 // TODO: instead of event listener, use hook for promise isLoading on github data fetches
 // TODO: fetch github commit history
@@ -17,31 +17,32 @@ export default function LoadingClosedFidget() {
   let fidgetWidth = fidgetWidth_0;
   let carOpacity = 1;
 
-  const toggleExpansion = () => {
-    const cars = document.getElementsByClassName('car');
-    console.log(cars);
-    const displayContainers = document.getElementsByClassName('displayContainer');
-    if (cars.length) {
-      const displayContainer = displayContainers[0];
-      if (cars[0].style.opacity === '0') {
-        displayContainer.classList.remove("shrinking")
-        cars[0].style.opacity = '1';
-        displayContainer.style.left = `${X_0}%`;
-        displayContainer.style.top = `${Y_0}%`;
-        displayContainer.style.width = `${fidgetWidth_0}%`;
-      } else {
-        displayContainer.classList.add("shrinking");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (!isLoading) {
+      const cars = document.getElementsByClassName('car');
+      const displayContainers = document.getElementsByClassName('displayContainer');
+      const infoDisplays = document.getElementsByClassName('infoDisplay');
+
+      if (cars.length) {
+        const displayContainer = displayContainers[0];
         cars[0].style.opacity = '0';
-        displayContainer.style.left = `${X_1}%`;
-        displayContainer.style.top = `${Y_1}%`;
-        displayContainer.style.width = `${fidgetWidth_1}%`;
+        displayContainer.classList.add("shrinking");
+      }
+
+      if (infoDisplays.length) {
+        const infoDisplay = infoDisplays[0];
+        infoDisplay.classList.add('risingText');
       }
     }
-  }
-  // window.addEventListener('click', toggleExpansion);
+  }, [isLoading]);
 
   return (
     <div className="lockscreenContainer">
+      <div className="infoDisplay">
+        <HoldingScreenInfo loadingCallback={setIsLoading}/>
+      </div>
       <div className="displayContainer">
         <div className="boardroomTextContainer">
           <svg className="boardroomText" viewBox="0 0 403 62" xmlns="http://www.w3.org/2000/svg">
@@ -112,8 +113,18 @@ export default function LoadingClosedFidget() {
           .lockscreenContainer {
             height: 100%;
             width: 100%;
+            z-index: 100;
             position: absolute;
             background-color: rgb(191, 191, 191, 0.9);
+          }
+
+          .infoDisplay {
+            position: absolute;
+            left: ${X_0}%;
+            top: ${Y_1}%;
+            opacity: 0.0;
+            width: 50%;
+            z-index: 10;
           }
           
           .boardroomTextContainer {
@@ -195,7 +206,44 @@ export default function LoadingClosedFidget() {
           }
           
           .shrinking {
-            animation: recede 0.2s linear;
+            animation: recede 0.5s;
+          }
+
+          .risingText {
+            animation: rise 0.5s;
+            animation-delay: 0.5s;
+          }
+
+          .sinkingText {
+            animation: vanish 0.5s;
+          }
+
+          .shrinking, .risingText, .sinkingText {
+            -webkit-animation-fill-mode: forwards;
+            -moz-animation-fill-mode: forwards;   
+            -o-animation-fill-mode: forwards;
+            -ms-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+          }
+
+          @keyframes vanish {
+            0% {
+              opacity: 1;
+            }
+
+            100% {
+              opacity: 0;
+            }
+          }
+
+          @keyframes rise {
+            0% {
+              opacity: 0;
+            }
+
+            100% {
+              opacity: 1;
+            }
           }
           
           @keyframes recede {
