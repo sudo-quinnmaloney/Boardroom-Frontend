@@ -21,7 +21,6 @@ export default function LoadingClosedFidget() {
 
   useEffect(() => {
     if (!isLoading) {
-      console.log('loading is done');
       const cars = document.getElementsByClassName('car');
       const displayContainers = document.getElementsByClassName('displayContainer');
       const infoDisplays = document.getElementsByClassName('infoDisplay');
