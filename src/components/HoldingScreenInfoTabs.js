@@ -8,13 +8,13 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import CommitHistory from './CommitHistory';
-import {useEffect} from "react";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
     <div
+      className={"tab-panel"}
       role="tabpanel"
       hidden={value !== index}
       id={`full-width-tabpanel-${index}`}
@@ -27,6 +27,7 @@ function TabPanel(props) {
           {children}
         </Typography>
       </Box>
+      <style>{`.tab-panel { height: 80%; overflow: scroll;}`}</style>
     </div>
   );
 }
@@ -58,7 +59,7 @@ const HoldingScreenInfo = ({ loadingCallback }) => {
   };
 
   return (
-    <Box sx={{ bgcolor: 'none', width: '100%' }}>
+    <Box sx={{ bgcolor: 'none', width: '100%'}}>
       <AppBar position="static" color="transparent" elevation={0}>
         <Tabs
           sx={{bgcolor:'none'}}

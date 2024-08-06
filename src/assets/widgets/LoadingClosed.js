@@ -21,6 +21,7 @@ export default function LoadingClosedFidget() {
 
   useEffect(() => {
     if (!isLoading) {
+      console.log('loading is done');
       const cars = document.getElementsByClassName('car');
       const displayContainers = document.getElementsByClassName('displayContainer');
       const infoDisplays = document.getElementsByClassName('infoDisplay');
@@ -114,6 +115,7 @@ export default function LoadingClosedFidget() {
             height: 100%;
             width: 100%;
             z-index: 100;
+            overflow: hidden;
             position: absolute;
             background-color: rgb(191, 191, 191, 0.9);
           }
