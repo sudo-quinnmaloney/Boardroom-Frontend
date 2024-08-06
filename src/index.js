@@ -1,5 +1,5 @@
 import React from 'react';
-import {hydrate} from 'react-dom';
+import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import App from './App';
 import {createStore} from 'redux'
@@ -7,6 +7,7 @@ import {Provider} from 'react-redux'
 import counterApp from './reducers'
 import {ThemeProvider, StyledEngineProvider} from '@mui/material/styles'
 import theme from './theme'
+import reportWebVitals from "./reportWebVitals";
 
 const preloadedState = window.__PRELOADED_STATE__
 
@@ -35,4 +36,6 @@ function Application() {
   );
 }
 
-hydrate(<Application/>, document.getElementById('root'));
+const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
+renderMethod(<Application/>, document.getElementById('root'));
+reportWebVitals();
