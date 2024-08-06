@@ -112,16 +112,17 @@ export default function LoadingClosedFidget() {
         {`
           .lockscreenContainer {
             height: 100%;
-            width: 100%;
+            width: 110%;
+            left: -5%;
             z-index: 100;
             overflow: hidden;
-            position: absolute;
+            position: fixed;
             background-color: rgb(191, 191, 191, 0.9);
           }
 
           .infoDisplay {
             position: absolute;
-            left: ${X_0}%;
+            left: ${X_0 + 5}%;
             top: ${Y_1}%;
             opacity: 0.0;
             width: 50%;
@@ -144,7 +145,7 @@ export default function LoadingClosedFidget() {
             width: ${fidgetWidth}%;
             position: absolute;
             top: ${Y}%;
-            left: ${X}%;
+            left: ${X + 5}%;
           }
           
           .loaderContainer {
@@ -249,13 +250,13 @@ export default function LoadingClosedFidget() {
           
           @keyframes recede {
             0% {
-              left: ${X_0}%;
+              left: ${X_0 + 5}%;
               top: ${Y_0}%;
               width: ${fidgetWidth_0}%;
             }
             
             100% {
-              left: ${X_1}%;
+              left: ${X_1 + 5}%;
               top: ${Y_1}%;
               width: ${fidgetWidth_1}%;
             }
