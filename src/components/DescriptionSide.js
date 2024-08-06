@@ -7,7 +7,8 @@ import Link from '@mui/material/Link';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100vh',
+    height: '100%',
+    overflow: 'scroll',
   },
   paper: {
     margin: theme.spacing(8, 4),
