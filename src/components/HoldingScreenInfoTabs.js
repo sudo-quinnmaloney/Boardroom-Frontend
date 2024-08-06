@@ -27,7 +27,7 @@ function TabPanel(props) {
           {children}
         </Typography>
       </Box>
-      <style>{`.tab-panel { height: 80%; overflow: scroll;}`}</style>
+      <style>{`.tab-panel { height: 90%; overflow: scroll;}`}</style>
     </div>
   );
 }
