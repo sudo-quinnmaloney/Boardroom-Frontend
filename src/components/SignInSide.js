@@ -34,11 +34,11 @@ const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
     position: 'fixed',
+    overflow: 'scroll',
     right: 0,
     top: 0,
     width: '30%', // Adjust as needed
     zIndex: 1, // Ensure it is above other content
-    overflow: 'scroll'
   },
   image: {
     backgroundImage: 'url(https://source.unsplash.com/random)',
@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    height: '100vh'
+    height: '100%'
   },
   avatar: {
     margin: theme.spacing(1),
