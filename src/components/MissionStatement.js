@@ -10,6 +10,17 @@ const MissionStatement = () => {
   }
 
   const addCitation = (reference, description) => {
+    // TODO: check if reference exists in citationMap
+    for (let [key, value] of citationMap) {
+      if (value.reference === reference) {
+        return (
+          <span className={'citation'}> <a className={'citation-link'} onClick={() => {
+            onLinkClick(key);
+          }}>[{key}]</a></span>
+        );
+      }
+    }
+
     citationCount += 1;
     const thisKey = citationCount;
     citationMap.set(citationCount, {reference, description});
@@ -34,7 +45,7 @@ const MissionStatement = () => {
     <div id={'mission-statement'}>
       <h1>What is Boardroom?</h1>
       <p>Plain and simple, Boardroom is a platform for the public distribution and discussion of corporate proxy voting materials.
-        While it may not sound very sexy, we hope that filling this desperately vacant niche will provide a powerful tool in guiding, resisting, or rewarding corporations that all too often disregard their ethics in their efforts to maximize profits.</p>
+        While it may not sound sexy, we hope that filling this desperately vacant niche will provide a powerful tool in guiding, resisting, or rewarding corporations that all too often disregard their ethics in their efforts to maximize profits.</p>
 
       <h2>What is proxy voting?</h2>
       <p className={'text-in-progress'}>Working on an effective explanation...</p>
@@ -50,22 +61,63 @@ const MissionStatement = () => {
           'https://zipdo.co/google-user-statistics/',
           'Zipdo - Google User Statistics'
         )}, and countless other impressive measures of influence, Google policies and behaviors are arguably as
-        consequential as those of any government today. </p>
-
-      <p>Not only are these voting materials absent from public discourse, but even when shareholders do collectivize, executive interests can be almost impossible to overcome.</p>
-      <p>One of their 2023 shareholder proposals says it well:</p>
-      <blockquote>
-        <p className={'quotation'}>"In our company’s multi-class voting structure, Class B stock has 10 times the voting rights of Class A. As a result, Mr. Page and Mr. Brin currently control over 51% of our company’s total voting power while owning less than 12% of stock – and will continue to retain voting control even though they have stepped down from leading the company. This raises concerns that the interests of public shareholders may be subordinated to those of our co-founders.
-
-
-
-Due to this voting structure, our company takes public shareholder money but refuses shareholders an equal voice in the company’s management. For example, it was primarily the weight of the insiders’ 10 votes per share that permitted the creation of a non-voting class of stock (class C) despite the fact that the “majority of [shareholders] voted to oppose the maneuver.” The New York Times reported that “only about 12.7 percent of Google’s Class A stockholders — other than Mr. Brin, Mr. Page and other Google directors and employees — voted in support of issuing the Class C stock … With little regard for the shareholders’ opinion, Google continued with the plan.”
-          {addCitation("https://www.sec.gov/ix?doc=/Archives/edgar/data/1652044/000130817923000736/lgoog2023_def14a.htm#lgooga066", "Google 2023 proxy materials - Stockholder Proposal Regarding Equal Shareholder Voting")}</p>
-      </blockquote>
-      <p>Predictably, this proposal failed to correct Google's voting structure, receiving 30.73% of votes.
-        And failed again in 2024 with 31.28%. That should inspire some hope though! These proposals are recurring, our window of opportunity to enact serious change is not yet closed, and currently only a small fraction of shareholders actually vote.<br/> Boardroom can change that.
+        consequential as those of any government today. While the vast majority of these users have had no say in how Google operates,
+        here are just a few of the shareholder proposals that have been shot down in recent years:
       </p>
-      <p>This is just one of many, many proposals from many, many influential public companies that have been squashed by voting structures, 'board recommendations', and a pointed lack of publicity, despite being transparently beneficial to the consumer and the general public. Our mission with Boardroom is to break this pattern by providing the means to educate, debate, criticize, support, unify, and hold corporate leaders accountable for their actions - or lack thereof.</p>
+      <ul>
+        <li><p>Proposing a Transition from Dual-Class to Single-Class Shares, Allowing Equal Voting Rights for All
+          Shareholders
+          {addCitation(
+            'https://www.sec.gov/ixviewer/ix.html?doc=/Archives/edgar/data/1652044/000130817924000612/lgoog2024_def14a.htm#lgooga059',
+            'Google 2024 Proxy Materials - Stockholder Proposal Regarding Equal Shareholder Voting'
+          )}
+        </p></li>
+        <li><p>Requesting an Examination of the Company’s Climate Lobbying in Regards to the Paris Agreement
+          {addCitation(
+            'https://www.sec.gov/ix?doc=/Archives/edgar/data/1652044/000130817923000736/lgoog2023_def14a.htm#lgooga056',
+            'Google 2023 Proxy Materials - Stockholder Proposal Regarding a Climate Lobbying Report'
+          )}
+        </p></li>
+        <li><p>Requesting a Report on Data Privacy in Defense of Reproductive Rights
+          {addCitation(
+            'https://www.sec.gov/ix?doc=/Archives/edgar/data/1652044/000130817923000736/lgoog2023_def14a.htm#lgooga057',
+            'Google 2023 Proxy Materials - Stockholder Proposal Regarding a Report on Reproductive Rights and Data Privacy'
+          )}
+        </p></li>
+        <li><p>Requesting a Human Rights Assessment of AI-Driven Targeted Ad Policies
+          {addCitation(
+            'https://www.sec.gov/ixviewer/ix.html?doc=/Archives/edgar/data/1652044/000130817924000612/lgoog2024_def14a.htm#lgooga063',
+            'Google 2024 Proxy Materials - Stockholder Proposal Regarding a Human Rights Assessment of AI-Driven Targeted Ad Policies'
+          )}
+        </p></li>
+        <li><p>Requesting a Report on Online Safety for Children
+          {addCitation(
+            'https://www.sec.gov/ixviewer/ix.html?doc=/Archives/edgar/data/1652044/000130817924000612/lgoog2024_def14a.htm#lgooga064',
+            'Google 2024 Proxy Materials - Stockholder Proposal Regarding a Report on Online Safety for Children'
+          )}
+        </p></li>
+      </ul>
+
+      <p>Or how about Apple:</p>
+      <ul>
+        <li><p>Requesting a Report on Supply Chain Forced Labor
+          {addCitation(
+            'https://www.sec.gov/Archives/edgar/data/320193/000119312522003583/d222670ddef14a.htm#tx222670_36b',
+            'Apple 2022 Proxy Materials - Report on Supply Chain Forced Labor'
+          )}
+        </p></li>
+        <li><p>Requesting a Report on Congruency of Privacy and Human Rights Policies
+          {addCitation(
+            'https://www.sec.gov/ix?doc=/Archives/edgar/data/320193/000130817924000010/laapl2024_def14a.htm#laapl2024a041',
+            'Apple 2024 Proxy Materials - Congruency Report on Privacy and Human Rights'
+          )}
+        </p></li>
+      </ul>
+      <p>Most of these proposals are simple requests for transparent third-party analysis; but if given an opportunity to
+        crowdsource, receive feedback on a broader scale, and garner support globally, these proposals could become
+        valuable tools for change and regulation. In pursuit of this, our mission at Boardroom is to provide
+        the means to educate, debate, criticize, support, unify, and hold corporate leaders accountable for
+        their actions - or lack thereof.</p>
       <h3>References</h3>
       {listCitations()}
       <style>{`

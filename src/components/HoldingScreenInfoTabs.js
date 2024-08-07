@@ -65,7 +65,7 @@ const HoldingScreenInfo = ({ loadingCallback }) => {
     <Box sx={{ bgcolor: 'none', width: '100%'}}>
       <AppBar position="static" color="transparent" elevation={0}>
         <Tabs
-          sx={{bgcolor:'none'}}
+          sx={{ bgcolor:'none' }}
           value={value}
           onChange={handleChange}
           indicatorColor="primary"

@@ -61,8 +61,8 @@ function MakeCommitRows({loadingCallback}) {
   }
 
   return (
-    <TableContainer component={'div'}>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+    <TableContainer id={'table-container'} component={'div'}>
+      <Table size="small" aria-label="a dense table">
         <TableHead className={'table-head'}>
           <TableRow>
             <TableCell align="left">Date</TableCell>
@@ -74,6 +74,7 @@ function MakeCommitRows({loadingCallback}) {
           {commitRows}
         </TableBody>
       </Table>
+      <style>{`#table-container {}`}</style>
     </TableContainer>
   );
 }
