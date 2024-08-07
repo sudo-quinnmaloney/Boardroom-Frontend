@@ -110,11 +110,6 @@ export default function LoadingClosedFidget() {
       </div>
       <style>
         {`
-          html {
-            max-width: 100vw !important;
-            max-height: 100vh !important;
-          }
-  
           .lockscreenContainer {
             height: 100%;
             width: 100%;
@@ -132,8 +127,6 @@ export default function LoadingClosedFidget() {
             opacity: 0.0;
             width: 70%;
             z-index: 1000;
-            overflow: scroll;
-            -webkit-overflow-scrolling: touch;
           }
           
           .boardroomTextContainer {
@@ -149,7 +142,7 @@ export default function LoadingClosedFidget() {
           .displayContainer {
             position: absolute;
             float: center;
-            overflow: scroll;
+            overflow-x: hidden;
             width: ${fidgetWidth}%;
             top: ${Y}%;
             left: ${X}%;
@@ -157,6 +150,7 @@ export default function LoadingClosedFidget() {
           
           .loaderContainer {
             position: relative;
+            overflow: hidden;
             width: 100%;
             aspect-ratio : 1 / 1;
           }
