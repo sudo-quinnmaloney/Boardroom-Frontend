@@ -126,7 +126,7 @@ export default function LoadingClosedFidget() {
             top: ${Y_1}%;
             opacity: 0.0;
             width: 70%;
-            z-index: 10;
+            z-index: 1000;
           }
           
           .boardroomTextContainer {

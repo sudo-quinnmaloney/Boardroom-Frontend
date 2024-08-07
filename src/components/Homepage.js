@@ -17,13 +17,20 @@ const useStyles = makeStyles(theme => ({
 
 export default function Homepage() {
   const classes = useStyles();
-
+  if (process.env.REACT_APP_IN_DEVELOPMENT === 'true') {
+    console.log('Boardroom is currently in development, but you can follow my progress and get the gist here in the meantime.');
+  }
   return (
     <Grid container component="main" id={classes.root}>
-      <LoadingClosedFidget />
       <CssBaseline />
-      <DescriptionSide />
-      <SignInSide />
+      {
+        process.env.REACT_APP_IN_DEVELOPMENT === 'false' ? (
+          <div>
+            <DescriptionSide />
+            <SignInSide />
+          </div>
+        ) : <LoadingClosedFidget />
+      }
     </Grid>
   );
 }

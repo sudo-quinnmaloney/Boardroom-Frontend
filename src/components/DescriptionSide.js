@@ -6,10 +6,6 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    height: '100%',
-    overflow: 'scroll'
-  },
   paper: {
     margin: theme.spacing(8, 4),
     display: 'flex',
@@ -26,6 +22,10 @@ const useStyles = makeStyles(theme => ({
   descriptionSide: {
     flexGrow: 1,
     marginRight: '30%', // Ensure it does not overlap with SignInSide
+    position: 'relative',
+    zIndex: 1,
+    height: '100%',
+    overflow: 'scroll',
   },
 }));
 

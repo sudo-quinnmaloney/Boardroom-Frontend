@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import getCommitHistory from '../functions/FetchCommits';
 
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+
+function createData(date, time, description) {
+  return { date, time, description };
+}
+
 function MakeCommitRows({loadingCallback}) {
   const [commitRows, setCommitRows] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -11,11 +22,27 @@ function MakeCommitRows({loadingCallback}) {
         const response = await getCommitHistory();
         const rows = response.map((commit) => {
           let date = new Date(Date.parse(commit.commit.author.date));
-          let details =`${date.getMonth()}/${date.getDate()}: ${commit.commit.message}`;
+          let dateString = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
+          let timeString = `${
+            date.getHours()
+              .toString().length < 2 ? '0' + date.getHours().toString() : date.getHours()
+          }:${
+            date.getMinutes()
+              .toString()
+              .length < 2 ? '0' + date.getMinutes().toString() : date.getMinutes()}`;
+          let details =`${commit.commit.message}`;
+          const row = createData(dateString, timeString, details);
+
           return (
-            <li style={{'listStyle': 'none', 'color': '#5e4f4e'}} key={commit.sha}>
-              {details}
-            </li>
+            <TableRow
+              hover={true}
+              key={commit.sha}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell align="left">{row.date}</TableCell>
+              <TableCell align="left">{row.time}</TableCell>
+              <TableCell align="left">{row.description}</TableCell>
+            </TableRow>
           );
         });
         setCommitRows(rows);
@@ -34,17 +61,25 @@ function MakeCommitRows({loadingCallback}) {
   }
 
   return (
-    <ul className={'commit-list'}>
-      {commitRows}
-    </ul>
+    <TableContainer component={'div'}>
+      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+        <TableHead className={'table-head'}>
+          <TableRow>
+            <TableCell align="left">Date</TableCell>
+            <TableCell align="left">Time</TableCell>
+            <TableCell align="left">Description</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody className={'table-body'} sx={{ marginTop: '0%'}}>
+          {commitRows}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }
 
 export default function CommitHistory({loadingCallback}) {
   return (
-    <div>
-      <MakeCommitRows loadingCallback={loadingCallback}/>
-      <style>{`.commit-list {padding: 0 0 0 0;}`}</style>
-    </div>
+    <MakeCommitRows loadingCallback={loadingCallback}/>
   );
 }

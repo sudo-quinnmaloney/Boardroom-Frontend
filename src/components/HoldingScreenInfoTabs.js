@@ -8,6 +8,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import CommitHistory from './CommitHistory';
+import MissionStatement from "./MissionStatement";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -21,12 +22,14 @@ function TabPanel(props) {
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      <Box hidden={value !== index} sx={{ p: 3 }}>
-        <Typography
-          component={"div"}>
-          {children}
-        </Typography>
-      </Box>
+      <div className={"tab-panel-internal"}>
+        <Box hidden={value !== index} sx={{ p: 3 }}>
+          <Typography
+            component={"div"}>
+            {children}
+          </Typography>
+        </Box>
+      </div>
       <style>{`.tab-panel { height: 80%; overflow: scroll;}`}</style>
     </div>
   );
@@ -70,9 +73,9 @@ const HoldingScreenInfo = ({ loadingCallback }) => {
           variant="fullWidth"
           aria-label="holding screen info tabs"
         >
-          <Tab label="Progress" {...a11yProps(0)} />
-          <Tab disabled={true} label="Mission" {...a11yProps(1)} />
-          <Tab disabled={true} label="About Me" {...a11yProps(2)} />
+          <Tab label="Mission" {...a11yProps(0)} />
+          <Tab label="Progress" {...a11yProps(1)} />
+          <Tab disabled={true} label="About Us" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -80,14 +83,14 @@ const HoldingScreenInfo = ({ loadingCallback }) => {
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-        <TabPanel value={value} index={0} dir={theme.direction}>
+        <TabPanel value={value} index={0} dir={theme.direction} sx={{width: '100%', height: '100%'}}>
+          <MissionStatement />
+        </TabPanel>
+        <TabPanel value={value} index={1} dir={theme.direction} sx={{width: '100%', height: '100%'}}>
           <CommitHistory loadingCallback={loadingCallback}/>
         </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          Item Two
-        </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
-          Item Three
+        <TabPanel value={value} index={2} dir={theme.direction} sx={{width: '100%', height: '100%'}}>
+          <p>Coming soon...</p>
         </TabPanel>
       </SwipeableViews>
     </Box>

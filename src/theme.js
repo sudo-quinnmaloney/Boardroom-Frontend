@@ -8,7 +8,7 @@ const theme = createTheme(adaptV4Theme({
       main: 'rgba(225,45,50,0.8)',
     },
     secondary: {
-      main: 'rgba(225,45,50,0.8)',
+      main: 'rgb(114,47,47)',
     },
     error: {
       main: red.A400,
