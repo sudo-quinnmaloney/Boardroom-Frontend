@@ -16,6 +16,7 @@ function MakeCommitRows({loadingCallback}) {
   const [commitRows, setCommitRows] = useState(null);
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     async function fetchCommits() {
       try {
@@ -49,6 +50,7 @@ function MakeCommitRows({loadingCallback}) {
       } catch (error) {
         console.error(error);
       } finally {
+        await new Promise(r => setTimeout(r, 1500));
         setLoading(false);
         loadingCallback(false);
       }
@@ -62,7 +64,7 @@ function MakeCommitRows({loadingCallback}) {
 
   return (
     <TableContainer id={'table-container'} component={'div'}>
-      <Table size="small" aria-label="a dense table">
+      <Table size="small" aria-label="a table of Boardroom git commit history">
         <TableHead className={'table-head'}>
           <TableRow>
             <TableCell align="left">Date</TableCell>
@@ -74,7 +76,6 @@ function MakeCommitRows({loadingCallback}) {
           {commitRows}
         </TableBody>
       </Table>
-      <style>{`#table-container {}`}</style>
     </TableContainer>
   );
 }
