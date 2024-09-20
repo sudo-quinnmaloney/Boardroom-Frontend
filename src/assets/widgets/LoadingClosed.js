@@ -4,13 +4,15 @@ import HoldingScreenInfo from '../../components/HoldingScreenInfoTabs';
 // TODO: instead of event listener, use hook for promise isLoading on github data fetches
 // TODO: fetch github commit history
 export default function LoadingClosedFidget() {
-  const X_0 = 20;
-  const Y_0 = 21;
+  const X_0 = 35;
+  const Y_0 = 10;
   const fidgetWidth_0 = 30;
 
   const X_1 = 2;
   const Y_1 = 6;
   const fidgetWidth_1 = 15;
+
+  const X_3 = 20;
 
   let X = X_0;
   let Y = Y_0;
@@ -122,7 +124,7 @@ export default function LoadingClosedFidget() {
 
           .infoDisplay {
             position: absolute;
-            left: ${X_0}%;
+            left: ${X_3}%;
             top: ${Y_1}%;
             opacity: 0.0;
             width: 70%;
@@ -267,6 +269,27 @@ export default function LoadingClosedFidget() {
             width: 100px;
             height: 100px;
             margin-bottom: 20px;
+          }
+
+          .tab-panel {
+            overflow-x: auto;
+          }
+
+          ::-webkit-scrollbar {
+            width: 8px;
+          }
+
+          ::-webkit-scrollbar-track {
+            border-radius: 8px;
+          }
+          
+          ::-webkit-scrollbar-thumb {
+            background: rgb(194, 125, 125); 
+            border-radius: 8px;
+          }
+
+          ::-webkit-scrollbar-thumb:hover {
+            background: rgb(180, 76, 76); 
           }
         `}
       </style>

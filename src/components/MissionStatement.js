@@ -45,11 +45,16 @@ const MissionStatement = () => {
     <div id={'mission-statement'}>
       <h1>What is Boardroom?</h1>
       <p>Plain and simple, Boardroom is a platform for the public distribution and discussion of corporate proxy voting materials.
-        While it may not sound sexy, we hope that filling this desperately vacant niche will provide a powerful tool in guiding, resisting, or rewarding corporations that all too often disregard their ethics in their efforts to maximize profits.</p>
+        While it may not sound sexy, we hope that filling this desperately vacant niche will provide a powerful tool in guiding, resisting, or rewarding corporations that all too often disregard their ethics in their efforts to maximize profits and control.</p>
 
       <h2>What is proxy voting?</h2>
-      <p className={'text-in-progress'}>Working on an effective explanation...</p>
-      <h2>Why does it matter?</h2>
+      <p>Proxy voting is a mechanism that allows shareholders to vote on corporate matters without being physically present at the annual meeting. 
+        This process gives investors to an opportunity to influence key decisions, such as the election of board members or approval of corporate initiatives. 
+        Proxy materials, which include documents like shareholder proposals, ballots, and reports, provide shareholders with the necessary information to make informed voting decisions. </p>
+      <p>Currently, proxy materials are buried in SEC databases every year despite being technically public information; 
+        even for shareholders who are eligible to participate, the voting process can be cumbersome and opaque, often leading to low participation rates. 
+        And for those who <em>do</em> vote, the resources to meaningfully engage and fully understand the proposals being voted on are few and far between. These layered inadequacies are concerningly convenient for those in charge. We hope Boardroom can be a foot in the door for any third parties who seek a more meaningful influence on the projects they invest heavily in, or for activist investors who seek to challenge corporate practices and push for social or environmental change.</p>
+      <h2>How meaningful can this be?</h2>
       <p>Let's look towards Google (GOOGL) for an example. Estimated to have over 3 billion monthly active users (MAU) for YouTube alone
         {addCitation(
           'https://datareportal.com/reports/digital-2023-october-global-statshot',
